@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Customer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Edit Customer</h2>
+
+        <!-- Form chỉnh sửa khách hàng -->
+        <form th:action="@{/dashboard/admin/customers/update/{id}(id=${customer.id})}" method="post" th:object="${customer}">
+            <input type="hidden" name="id" th:value="${customer.id}">
+
+            <!-- Tên khách hàng -->
+            <label class="block mb-2">Name:</label>
+            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4" required>
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('name')}" class="text-red-500 text-sm mt-1" th:errors="*{name}"></div>
+
+            <!-- Email -->
+            <label class="block mb-2">Email:</label>
+            <input type="email" name="email" th:field="*{email}" class="w-full border p-2 rounded mb-4" required>
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('email')}" class="text-red-500 text-sm mt-1" th:errors="*{email}"></div>
+
+            <!-- Số điện thoại -->
+            <label class="block mb-2">Phone:</label>
+            <input type="text" name="phone" th:field="*{phone}" class="w-full border p-2 rounded mb-4" required>
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('phone')}" class="text-red-500 text-sm mt-1" th:errors="*{phone}"></div>
+
+            <!-- Nút cập nhật -->
+            <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Update</button>
+
+            <!-- Hủy và quay lại danh sách khách hàng -->
+            <a href="/dashboard/admin/all-customers" class="ml-4 text-blue-500 hover:underline">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

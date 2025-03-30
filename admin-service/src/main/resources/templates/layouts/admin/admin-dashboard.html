@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <!--Trang Admin-->
+
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-6">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md text-center">
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">Welcome, Admin!</h2>
+        
+        <div class="flex flex-col space-y-3">
+            <a href="/dashboard/admin/all-customers" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Customers</a>
+            <a href="/dashboard/admin/all-products" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">Products</a>
+            <a href="/login" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Customer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Add New Customer</h2>
+
+        <!-- Sử dụng th:action để gửi yêu cầu POST đến /dashboard/admin/customers -->
+        <form th:action="@{/dashboard/admin/customers}" method="post" class="space-y-4" th:object="${customer}">
+            <div>
+                <label for="name" class="block text-sm font-semibold">Name</label>
+                <input type="text" id="name" name="name" th:field="*{name}" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Hiển thị lỗi nếu có -->
+                <div th:if="${#fields.hasErrors('name')}" class="text-red-500 text-sm mt-1" th:errors="*{name}"></div>
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-semibold">Email</label>
+                <input type="email" id="email" name="email" th:field="*{email}" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Hiển thị lỗi nếu có -->
+                <div th:if="${#fields.hasErrors('email')}" class="text-red-500 text-sm mt-1" th:errors="*{email}"></div>
+            </div>
+
+            <div>
+                <label for="phone" class="block text-sm font-semibold">Phone</label>
+                <input type="text" id="phone" name="phone" th:field="*{phone}" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Hiển thị lỗi nếu có -->
+                <div th:if="${#fields.hasErrors('phone')}" class="text-red-500 text-sm mt-1" th:errors="*{phone}"></div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">Save</button>
+            </div>
+        </form>
+
+        <a href="/dashboard/admin/all-customers" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Back to Customers List</a>
+    </div>
+</body>
+</html>

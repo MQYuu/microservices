@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!--Trang Customer-->
+
+    <title>Customers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Customers</h2>
+        <a href="/dashboard/admin/customers/new" class="mb-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Add New Customer</a>
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border p-2">ID</th>
+                    <th class="border p-2">Name</th>
+                    <th class="border p-2">Email</th>
+                    <th class="border p-2">Phone</th>
+                    <th class="border p-2">Actions</th> <!-- Thêm cột Actions -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer : ${customers}" class="hover:bg-gray-100">
+                    <td class="border p-2" th:text="${customer.id}"></td>
+                    <td class="border p-2" th:text="${customer.name}"></td>
+                    <td class="border p-2" th:text="${customer.email}"></td>
+                    <td class="border p-2" th:text="${customer.phone}"></td>
+                    <td class="border p-2">
+                        <!-- Nút sửa -->
+                        <a th:href="@{/dashboard/admin/customers/edit/{id}(id=${customer.id})}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Edit</a>
+                        <!-- Nút xóa -->
+                        <form th:action="@{/dashboard/admin/customers/delete/{id}(id=${customer.id})}" method="get" style="display:inline;">
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/dashboard/admin/" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Back to Dashboard</a>
+    </div>
+</body>
+</html>

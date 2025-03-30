@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Add Product</h2>
+        <!-- Liên kết form với đối tượng product -->
+        <form th:action="@{/dashboard/admin/products/save}" method="post" th:object="${product}">
+            
+            <!-- Tên sản phẩm -->
+            <label class="block mb-2">Name:</label>
+            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4" required>
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('name')}" class="text-red-500 text-sm mt-1" th:errors="*{name}"></div>
+
+            <!-- Giá sản phẩm -->
+            <label class="block mb-2">Price:</label>
+            <input type="number" name="price" th:field="*{price}" step="0.01" class="w-full border p-2 rounded mb-4" required>
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('price')}" class="text-red-500 text-sm mt-1" th:errors="*{price}"></div>
+
+            <!-- Số lượng sản phẩm -->
+            <label class="block mb-2">Quantity:</label>
+            <input type="number" name="quantity" th:field="*{quantity}" class="w-full border p-2 rounded mb-4" required>
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('quantity')}" class="text-red-500 text-sm mt-1" th:errors="*{quantity}"></div>
+
+            <!-- Nút lưu -->
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Save</button>
+            <a href="/dashboard/admin/all-products" class="ml-4 text-blue-500 hover:underline">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
