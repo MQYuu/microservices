@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--Trang Home-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Food Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">YOUR LOGO</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/menu}">Our Menu</a></li>
+                    <li><a th:href="@{/listProduct}">Our Product</a></li>
+                    <li><a th:href="@{/promo}">Promo</a></li>
+                    <li><a th:href="@{/order}">Order</a></li>
+                </ul>                
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Healthy Food Restaurant</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </header>
+
+    <section class="menu">
+        <h2>POPULAR MENU</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="./images/Noodles1.png" alt="Noodles">
+                <div class="menu-content">
+                    <h3>Noodles</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <span>$13</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./images/Noodles2.jpg" alt="Noodles">
+                <div class="menu-content">
+                    <h3>Noodles</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <span>$13</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./images/Noodles3.jpg" alt="Noodles">
+                <div class="menu-content">
+                    <h3>Noodles</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <span>$13</span>
+                </div>
+            </div>
+        </div>
+        <button class="show-more">SHOW MORE</button>
+    </section>
+
+    <section class="discount">
+        <div class="discount-content">
+            <h2>Discount up to <br> <span>50% All Menu</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                laoreet dolore magna aliquam erat volutpat.</p>
+            <button class="read-more">READ MORE</button>
+        </div>
+    </section>
+
+    <section class="promo">
+        <div class="promo-content">
+            <h2>January’s Promo: Buy 1 Get 1 Free!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <button>Read More</button>
+        </div>
+    </section>
+
+    <section class="order-steps">
+        <h2>HOW TO ORDER</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="circle">01</div>
+                <h3>Order</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation omne ullamco laboris nisi ut
+                    aliqulore.</p>
+            </div>
+            <div class="step">
+                <div class="circle">02</div>
+                <h3>Choose Menu</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation omne ullamco laboris nisi ut
+                    aliqulore.</p>
+            </div>
+            <div class="step">
+                <div class="circle">03</div>
+                <h3>Delivery</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation omne ullamco laboris nisi ut
+                    aliqulore.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="delivery">
+        <h2>Free Delivery</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat volutpat.</p>
+        <button>GET VOUCHER</button>
+    </section>
+
+    <section class="testimonial">
+        <blockquote>
+            <div class="quote-icon">
+                <i class="fas fa-quote-left"></i>
+            </div>
+            <p>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis"
+            </p>
+            <cite>Agus Waiters</cite>
+        </blockquote>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h4>ABOUT</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+
+            <div class="footer-right">
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

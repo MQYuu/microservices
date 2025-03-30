@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">YOUR LOGO</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/menu}">Our Menu</a></li>
+                    <li><a th:href="@{/listProduct}">Our Product</a></li>
+                    <li><a th:href="@{/promo}">Promo</a></li>
+                    <li><a th:href="@{/order}">Order</a></li>
+                </ul>                
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Healthy Food Restaurant</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </header>
+
+    <section class="product-list py-12 px-4 bg-gray-50">
+        <h2 class="text-3xl font-semibold text-center mb-8">Our Products</h2>
+        <div class="products grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Mỗi sản phẩm được bọc trong thẻ <a> để có thể click chuyển trang -->
+            <a th:each="product : ${products}" th:href="@{/product/{id}(id=${product.id})}" class="block">
+                <div class="product-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer">
+                    <img th:src="${#strings.startsWith(product.imageUrl, 'http') ? product.imageUrl : '/images/' + product.imageUrl}" alt="Product Image" class="w-24 h-24 object-cover">
+                    <div class="product-info p-4">
+                        <h3 th:text="${product.name}" class="text-xl font-semibold text-gray-800 mb-2"></h3>
+                        <p th:text="'Price: $' + ${product.price}" class="text-gray-600 text-sm"></p>
+                        <p th:text="'Available: ' + ${product.quantity}" class="text-gray-600 text-sm"></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>    
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h4>ABOUT</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+
+            <div class="footer-right">
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - Healthy Food Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">YOUR LOGO</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/menu}">Our Menu</a></li>
+                    <li><a th:href="@{/listProduct}">Our Product</a></li>
+                    <li><a th:href="@{/promo}">Promo</a></li>
+                    <li><a th:href="@{/order}">Order</a></li>
+                </ul>                
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Healthy Food Restaurant</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </header>
+
+    <section class="menu">
+        <h2>POPULAR MENU</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="./images/Noodles1.png" alt="Noodles">
+                <div class="menu-content">
+                    <h3>Noodles</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <span>$13</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./images/Noodles2.jpg" alt="Noodles">
+                <div class="menu-content">
+                    <h3>Noodles</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <span>$13</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="./images/Noodles3.jpg" alt="Noodles">
+                <div class="menu-content">
+                    <h3>Noodles</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <span>$13</span>
+                </div>
+            </div>
+        </div>
+        <button class="show-more">SHOW MORE</button>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h4>ABOUT</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+
+            <div class="footer-right">
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Join us</a></li>
+                        <li><a href="#">Ethic</a></li>
+                        <li><a href="#">Goals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

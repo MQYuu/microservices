@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CustomerServiceApplication",
+            "request": "launch",
+            "mainClass": "com.yuu.customer_service.CustomerServiceApplication",
+            "projectName": "customer-service"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-AdminServiceApplication<admin-service>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

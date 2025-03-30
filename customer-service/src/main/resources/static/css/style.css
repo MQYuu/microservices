@@ -1,0 +1,656 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+header {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    background-image: url('../images/OrderStepBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+/* Hiệu ứng chấm nửa bên trái */
+header::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 140px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.6) 4px, transparent 5px);
+    background-size: 40px 35px;
+    bottom: -70px;
+    left: 20%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    z-index: 2;
+}
+
+/* Hiệu ứng chấm 3 cột x 5 hàng sát cạnh phải */
+header::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    /* 3 cột, mỗi cột ~40px */
+    height: 200px;
+    /* 5 hàng, mỗi hàng ~40px */
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.6) 4px, transparent 5px);
+    background-size: 40px 40px;
+    top: 50%;
+    right: 10px;
+    /* Sát cạnh phải */
+    transform: translateY(-50%);
+    opacity: 0.8;
+    z-index: 2;
+}
+
+
+.header-container {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffcc00;
+}
+
+.header-content {
+    margin-top: 100px;
+}
+
+.header-content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.header-content p {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.menu,
+.delivery {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    padding: 50px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menu {
+    background-image: url('../images/MenuBackground.jpg');
+    text-align: center;
+    background-color: #E6F0C2;
+    padding: 50px 20px;
+}
+
+.menu::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    /* 4 cột, mỗi cột ~30px */
+    height: 120px;
+    /* 4 hàng, mỗi hàng ~30px */
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.3) 4px, transparent 5px);
+    background-size: 30px 30px;
+    bottom: 70px;
+    /* Đẩy xuống dưới */
+    right: 20px;
+    /* Sát cạnh phải */
+    opacity: 0.8;
+}
+
+.menu h2 {
+    color: #4A6572;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    background: white;
+    width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.menu-content {
+    padding: 15px;
+}
+
+.menu-content h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-content p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.menu-content span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.discount {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    width: 100%;
+    padding: 50px;
+    background-image: url('../images/DiscountBackground.jpg');
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    position: relative;
+    /* Để chấm xanh nằm trên phần này */
+}
+
+/*Hiệu ứng dấu chấm ở phía dưới 1/2 nữa trái*/
+.discount::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background-image: radial-gradient(circle, #6E85A0 4px, transparent 5px);
+    background-size: 36px 30px;
+    bottom: -60px;
+    left: 25%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    z-index: 2;
+    /* Đẩy lên trên promo */
+}
+
+.discount-content {
+    max-width: 40%;
+    text-align: left;
+    color: black;
+    padding: 20px;
+    position: relative;
+    right: 10%;
+}
+
+.discount-content h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.discount-content p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/*Promo */
+.promo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Đẩy nội dung về bên trái */
+    min-height: 100vh;
+    width: 100%;
+    padding: 50px;
+
+    background: url('../images/PromoBackground.jpg') no-repeat right center;
+    background-size: 100% 100%;
+    /* Giãn ảnh full cả chiều rộng và chiều cao */
+    background-repeat: no-repeat;
+    position: relative;
+    /* Để hiệu ứng nằm trên phần này */
+}
+
+/*Hiệu ứng dấu chấm xanh ở phía dưới 1/2 nữa bên phải */
+.promo::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background-image: radial-gradient(circle, white 4px, transparent 5px);
+    background-size: 36px 30px;
+
+    bottom: -60px;
+    /* Dịch xuống thấp hơn */
+    right: 25%;
+    /* Ở giữa nửa bên phải */
+    transform: translateX(50%);
+    opacity: 0.8;
+}
+
+.promo-content {
+    max-width: 40%;
+    text-align: left;
+    color: black;
+    padding: 20px;
+    position: relative;
+    left: 10%;
+    /* Đẩy chữ vào giữa phần bên trái */
+}
+
+.promo-content h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.promo-content p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.promo-content button {
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #7B8DAB;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.promo-content button:hover {
+    background-color: #5E7295;
+}
+
+/*Section oder*/
+.order-steps {
+    background: url('../images/OrderStepBackground.jpg') no-repeat center center;
+    background-size: cover;
+    /* Ảnh sẽ phủ kín toàn bộ phần tử */
+    background-color: #6E85A0;
+    /* Màu nền fallback nếu ảnh lỗi */
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+    width: 100%;
+    /* Đảm bảo full width */
+    min-height: 100vh;
+    /* Đảm bảo full màn hình */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-steps h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.step {
+    width: 250px;
+    text-align: center;
+}
+
+.circle {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    color: #6E85A0;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.step h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 220px;
+    margin: 0 auto;
+    color: #E0E6ED;
+}
+
+.read-more {
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #7B8DAB;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.read-more:hover {
+    background-color: #5E7295;
+}
+
+.delivery {
+    background-image: url('../images/DeliveryBackground.jpg');
+    background-color: #F4F5F7;
+    /* Màu nền sáng nhẹ */
+    text-align: center;
+    padding: 60px 20px;
+    color: #6E85A0;
+}
+
+/* Dấu chấm ở phía dưới 1/2 nữa bên phải */
+.delivery::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background-image: radial-gradient(circle, #6E85A0 4px, transparent 5px);
+    background-size: 36px 30px;
+
+    bottom: -60px;
+    /* Dịch xuống thấp hơn */
+    right: 25%;
+    /* Ở giữa nửa bên phải */
+    transform: translateX(50%);
+    opacity: 0.8;
+    z-index: 2
+}
+
+/* Dấu chấm ở phía trên 1/2 nữa bên trái */
+.delivery::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background-image: radial-gradient(circle, white 4px, transparent 5px);
+    background-size: 36px 30px;
+
+    top: -60px;
+    /* Đặt phía trên */
+    right: 75%;
+    /* Ở giữa nửa bên phải */
+    transform: translateX(50%);
+    opacity: 0.8;
+    z-index: 2;
+    clip-path: inset(60px 0 0 0);
+    /* Cắt phần dấu chấm bị tràn phía trên */
+}
+
+.delivery h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.delivery p {
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 25px;
+    line-height: 1.6;
+}
+
+.delivery button {
+    background-color: #6E85A0;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.delivery button:hover {
+    background-color: #5C7292;
+}
+
+.show-more {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #7B8DAB;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.show-more:hover {
+    background-color: #5E7295;
+}
+
+button {
+    background-color: #5C7F95;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #4a657d;
+}
+
+/* SECTION TESTIMONIAL */
+.testimonial {
+    background-color: #E2E9C5;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.testimonial blockquote {
+    font-size: 18px;
+    color: #6E85A0;
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+.testimonial {
+    text-align: center;
+    padding: 40px;
+    background-color: #e6f0c5;
+    /* Màu nền nhẹ giống ảnh */
+    position: relative;
+    border-radius: 10px;
+}
+
+.quote-icon {
+    font-size: 36px;
+    color: #6E85A0;
+    /* Màu xanh nhẹ */
+    margin-bottom: 10px;
+}
+
+blockquote {
+    font-size: 18px;
+    font-style: italic;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+cite {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 20px;
+    color: #6E85A0;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ffcc00;
+}
+
+footer {
+    background: #6E85A0;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-left {
+    flex: 1.5;
+    padding-right: 20px;
+}
+
+.footer-left h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-right {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-right div {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.footer-right h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-right ul li {
+    margin-bottom: 5px;
+}
+
+.footer-right ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-right ul li a:hover {
+    text-decoration: underline;
+}
