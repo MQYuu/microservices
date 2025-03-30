@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Authority</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Edit Authority</h2>
+        <form th:action="@{/dashboard/system/authorities/update}" method="post">
+            <input type="hidden" name="id" th:value="${authority.id}" />
+            
+            <label class="block">Role:</label>
+            <input type="text" name="role" th:value="${authority.role}" required class="border px-2 py-1 w-full" />
+            
+            <button type="submit" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Update Authority</button>
+        </form>
+
+        <a href="/dashboard/system/all-authorities" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Back</a>
+    </div>
+</body>
+</html>

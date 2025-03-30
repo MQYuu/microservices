@@ -1,10 +1,11 @@
-package com.example.restaurant.entity;
+package com.yuu.system_service.entity;
 
-import com.example.restaurant.validation.ValidField;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import java.util.Set;
+
+import com.yuu.system_service.validation.ValidField;
 
 @Entity
 @Table(name = "users")

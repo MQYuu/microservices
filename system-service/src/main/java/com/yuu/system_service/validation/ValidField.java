@@ -1,4 +1,4 @@
-package com.example.restaurant.validation;
+package com.yuu.system_service.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

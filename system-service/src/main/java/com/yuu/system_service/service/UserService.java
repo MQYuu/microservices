@@ -1,8 +1,9 @@
-package com.example.restaurant.service;
+package com.yuu.system_service.service;
 
-import com.example.restaurant.entity.User;
-import com.example.restaurant.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import com.yuu.system_service.entity.User;
+import com.yuu.system_service.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

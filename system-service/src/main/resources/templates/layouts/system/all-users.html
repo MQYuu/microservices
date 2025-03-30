@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Users List</h2>
+        <a href="/dashboard/system/users/new" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Add User</a>
+        
+        <table class="w-full mt-4 border">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="p-2 border">ID</th>
+                    <th class="p-2 border">Username</th>
+                    <th class="p-2 border">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}" class="text-center">
+                    <td class="p-2 border" th:text="${user.id}"></td>
+                    <td class="p-2 border" th:text="${user.username}"></td>
+                    <td class="p-2 border">
+                        <a th:href="@{/dashboard/system/users/edit/{id}(id=${user.id})}" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Edit</a>
+                        <form th:action="@{/dashboard/system/users/delete/{id}(id=${user.id})}" method="post" style="display:inline;">
+                            <input type="hidden" name="_csrf" th:value="${_csrf.token}">  <!-- CSRF token nếu bạn sử dụng Spring Security -->
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Nút Back nằm trong cùng một background -->
+        <div class="mt-6 flex justify-center gap-4">
+            <a href="/dashboard/system/" 
+                class="bg-blue-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-all">
+                Back to Dashboard
+            </a>
+        </div>
+    </div>
+</body>
+</html>

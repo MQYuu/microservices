@@ -1,4 +1,4 @@
-package com.example.restaurant.entity;
+package com.yuu.system_service.entity;
 
 import jakarta.persistence.*;
 

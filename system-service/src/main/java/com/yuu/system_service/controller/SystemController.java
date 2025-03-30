@@ -1,15 +1,17 @@
-package com.example.restaurant.controller;
+package com.yuu.system_service.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import com.yuu.system_service.entity.Authority;
+import com.yuu.system_service.entity.User;
+import com.yuu.system_service.service.AuthorityService;
+import com.yuu.system_service.service.UserService;
+
 import java.util.List;
 
-import com.example.restaurant.entity.Authority;
-import com.example.restaurant.entity.User;
-import com.example.restaurant.service.UserService;
-import com.example.restaurant.service.AuthorityService;
 
 import jakarta.validation.Valid;
 

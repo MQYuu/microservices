@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SystemServiceApplication",
+            "request": "launch",
+            "mainClass": "com.yuu.system_service.SystemServiceApplication",
+            "projectName": "system-service"
+        },
+        {
+            "type": "java",
             "name": "CustomerServiceApplication",
             "request": "launch",
             "mainClass": "com.yuu.customer_service.CustomerServiceApplication",

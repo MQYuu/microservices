@@ -1,4 +1,4 @@
-package com.example.restaurant.security;
+package com.yuu.system_service.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,12 +33,12 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/home", "/products/**").permitAll()
-                        .requestMatchers("/dashboard/admin").hasRole("ADMIN")
-                        .requestMatchers("/dashboard/system").hasRole("SYSTEM")
+                        .requestMatchers("/dashboard/admin/").hasRole("ADMIN")
+                        .requestMatchers("/dashboard/system/").hasRole("SYSTEM")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login").permitAll()
-                        .defaultSuccessUrl("/", true))
+                        .defaultSuccessUrl("/dashboard/system/", true))
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/"));
