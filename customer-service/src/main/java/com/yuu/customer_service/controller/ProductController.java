@@ -1,44 +1,54 @@
 package com.yuu.customer_service.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.yuu.customer_service.entity.Product;
-import com.yuu.customer_service.service.ProductService;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Controller
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
+    private RestTemplate restTemplate;
 
     @GetMapping("/listProduct")
-    public String showProductPage(Model model) {
-        // Lấy danh sách sản phẩm từ service
-        List<Product> products = productService.getAllProducts();
+    public String getProducts(Model model) {
+        String apiUrl = "http://localhost:8080/api/products";
 
-        // Thêm danh sách sản phẩm vào model
-        model.addAttribute("products", products);
+        try {
+            // Sử dụng exchange để gửi request và nhận response
+            ResponseEntity<List<Product>> response = restTemplate.exchange(
+                    apiUrl, 
+                    HttpMethod.GET, 
+                    null, 
+                    new ParameterizedTypeReference<List<Product>>() {}
+            );
+
+            List<Product> products = response.getBody();
+
+            // In ra console để kiểm tra
+            System.out.println("Danh sách sản phẩm:");
+            for (Product product : products) {
+                System.out.println(product);  // Hoặc dùng product.toString() nếu cần format riêng
+            }
+
+            model.addAttribute("products", products);
+        } catch (Exception e) {
+            // In chi tiết lỗi ra console
+            System.err.println("Error occurred while fetching products: ");
+            e.printStackTrace();  // In chi tiết lỗi lên console
+
+            // Gửi thông báo lỗi vào model
+            model.addAttribute("error", "Không thể tải danh sách sản phẩm.");
+        }
 
         return "layouts/product";
     }
-
-        // Hiển thị chi tiết sản phẩm
-    @GetMapping("/product/{id}")
-    public String showProductDetail(@PathVariable Integer id, Model model) {
-        Product product = productService.getProductById(id);
-        if (product == null) {
-            // Xử lý khi không tìm thấy sản phẩm
-            return "redirect:/listProduct";
-        }
-        model.addAttribute("product", product);
-        return "layouts/product-detail"; 
-    }
 }
-

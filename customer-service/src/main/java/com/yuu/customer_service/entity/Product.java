@@ -1,45 +1,102 @@
 package com.yuu.customer_service.entity;
 
-import com.yuu.customer_service.validation.ValidField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-@Data
-@Entity
-@Table(name = "products")
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    // Kiểm tra tên sản phẩm, phải có ít nhất 3 ký tự, không chứa số
-    @ValidField(minLength = 3, maxLength = 100, requireLetters = true, requireNumbers = false, allowNumbers = false)
-    @Column(nullable = false)
+    private Long id;
     private String name;
-
-    // Kiểm tra giá trị giá sản phẩm, phải là số dương
-    @Column(nullable = false)
-    private Double price;
-
-    // Kiểm tra số lượng, phải là số nguyên dương
-    @Column(nullable = false)
-    private Integer quantity;
-
-    // Kiểm tra đường dẫn hình ảnh, yêu cầu URL hợp lệ (tối thiểu 10 ký tự)
-    @ValidField(minLength = 10, maxLength = 255, requireLetters = false, requireNumbers = false, allowNumbers = false)
+    private double price;
+    private int quantity;
     private String imageUrl;
-
-    // Kiểm tra mô tả sản phẩm, phải có ít nhất 10 ký tự và chứa chữ cái
-    @ValidField(minLength = 10, maxLength = 500, requireLetters = true, requireNumbers = false, allowNumbers = false)
     private String description;
+    private boolean validQuantity;
+    private boolean validPrice;
 
-    // Custom Validator cho price và quantity để đảm bảo chúng là số dương
-    public boolean isValidPrice() {
-        return price != null && price > 0;
+    // Getter and Setter methods
+    
+    @JsonProperty("id")
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("price")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @JsonProperty("quantity")
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @JsonProperty("imageUrl")
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @JsonProperty("validQuantity")
     public boolean isValidQuantity() {
-        return quantity != null && quantity >= 0;
+        return validQuantity;
+    }
+
+    public void setValidQuantity(boolean validQuantity) {
+        this.validQuantity = validQuantity;
+    }
+
+    @JsonProperty("validPrice")
+    public boolean isValidPrice() {
+        return validPrice;
+    }
+
+    public void setValidPrice(boolean validPrice) {
+        this.validPrice = validPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", description='" + description + '\'' +
+                ", validQuantity=" + validQuantity +
+                ", validPrice=" + validPrice +
+                '}';
     }
 }
