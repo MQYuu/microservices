@@ -1,24 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="bg-white p-8 rounded-lg shadow-md w-96">
-        <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
-        <form th:action="@{/login}" method="post" class="flex flex-col">
-            <label class="mb-2 text-gray-700">Username</label>
-            <input type="text" name="username" class="p-2 border border-gray-300 rounded mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none" required/>
+<body class="flex items-center justify-center h-screen bg-gray-100">
 
-            <label class="mb-2 text-gray-700">Password</label>
-            <input type="password" name="password" class="p-2 border border-gray-300 rounded mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none" required/>
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-center text-gray-800">Đăng nhập</h2>
 
-            <button type="submit" class="bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
-                Login
+        <!-- Hiển thị thông báo lỗi khi đăng nhập sai -->
+        <div th:if="${param.error}" class="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            Tài khoản của bạn không có quyền để đăng nhập vào trang này!
+        </div>
+
+        <form th:action="@{/login}" method="post" class="mt-6">
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-700">Tên đăng nhập</label>
+                <input type="text" id="username" name="username"
+                    class="mt-1 p-2 w-full border rounded focus:ring focus:ring-blue-200" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
+                <input type="password" id="password" name="password"
+                    class="mt-1 p-2 w-full border rounded focus:ring focus:ring-blue-200" required>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">
+                Đăng nhập
             </button>
         </form>
     </div>
+
 </body>
 </html>

@@ -11,21 +11,16 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails admin = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("123")
-                .roles("ADMIN")
-                .build();
-
         UserDetails system = User.withDefaultPasswordEncoder()
                 .username("system")
                 .password("123")
                 .roles("SYSTEM")
                 .build();
 
-        return new InMemoryUserDetailsManager(admin, system);
+        return new InMemoryUserDetailsManager(system);
     }
 
     @Bean
@@ -33,12 +28,11 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/home", "/products/**").permitAll()
-                        .requestMatchers("/dashboard/admin/").hasRole("ADMIN")
-                        .requestMatchers("/dashboard/system/").hasRole("SYSTEM")
+                        .requestMatchers("/dashboard/system/**").hasRole("SYSTEM") // Chỉ SYSTEM được vào
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login").permitAll()
-                        .defaultSuccessUrl("/dashboard/system/", true))
+                        .defaultSuccessUrl("/dashboard/system/", true)) // Login vào sẽ vào SYSTEM dashboard
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/"));

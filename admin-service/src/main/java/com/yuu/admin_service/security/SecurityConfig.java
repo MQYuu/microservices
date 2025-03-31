@@ -20,52 +20,40 @@ public class SecurityConfig {
         // 🔹 Tạo user "admin" có role ADMIN
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin") // Tên đăng nhập
-                .password("123")   // Mật khẩu
-                .roles("ADMIN")    // Vai trò (ROLE_ADMIN)
+                .password("123") // Mật khẩu
+                .roles("ADMIN") // Vai trò (ROLE_ADMIN)
                 .build();
 
-        // 🔹 Tạo user "system" có role SYSTEM
-        UserDetails system = User.withDefaultPasswordEncoder()
-                .username("system")
-                .password("123")
-                .roles("SYSTEM") // Vai trò (ROLE_SYSTEM)
-                .build();
-
-        return new InMemoryUserDetailsManager(admin, system);
+        return new InMemoryUserDetailsManager(admin);
     }
 
     // Cấu hình bảo mật
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // 🔹 Tắt CSRF để có thể gọi API từ bên ngoài mà không bị lỗi
-            .authorizeHttpRequests(auth -> auth
-                // Các trang công khai không yêu cầu đăng nhập
-                .requestMatchers("/", "/home", "/products/**", "/login", "/css/**", "/js/**").permitAll()
+                .csrf(csrf -> csrf.disable()) // 🔹 Tắt CSRF để có thể gọi API từ bên ngoài mà không bị lỗi
+                .authorizeHttpRequests(auth -> auth
+                        // Các trang công khai không yêu cầu đăng nhập
+                        .requestMatchers("/", "/home", "/products/**", "/login", "/css/**", "/js/**").permitAll()
 
-                // Cho phép truy cập API products mà không cần đăng nhập
-                .requestMatchers("/api/products/**").permitAll() 
+                        // Cho phép truy cập API products mà không cần đăng nhập
+                        .requestMatchers("/api/products/**").permitAll()
 
-                // Trang `/dashboard/admin/**` chỉ cho phép ADMIN truy cập
-                .requestMatchers("/dashboard/admin/**").hasRole("ADMIN")
+                        // Trang `/dashboard/admin/**` chỉ cho phép ADMIN truy cập
+                        .requestMatchers("/dashboard/admin/**").hasRole("ADMIN")
 
-                // Trang `/dashboard/system/**` chỉ cho phép SYSTEM truy cập
-                .requestMatchers("/dashboard/system/**").hasRole("SYSTEM")
-
-                // Mọi request khác đều phải đăng nhập
-                .anyRequest().authenticated()
-            )
-            .httpBasic(Customizer.withDefaults()) // Bật xác thực Basic Auth cho API
-            .formLogin(login -> login
-                .loginPage("/login").permitAll()  // Cho phép mọi người vào trang login
-                .successHandler(customSuccessHandler()) // Gọi hàm xử lý sau khi đăng nhập thành công
-                .failureUrl("/login?error=true")  // Nếu login thất bại, chuyển hướng về `/login?error=true`
-            )
-            .logout(logout -> logout
-                .logoutUrl("/logout")          // 🔹 Định nghĩa đường dẫn để logout
-                .logoutSuccessUrl("/")         // Sau khi logout thì quay về trang chủ
-                .permitAll()
-            );
+                        // Mọi request khác đều phải đăng nhập
+                        .anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults()) // Bật xác thực Basic Auth cho API
+                .formLogin(login -> login
+                        .loginPage("/login").permitAll() // Cho phép mọi người vào trang login
+                        .successHandler(customSuccessHandler()) // Gọi hàm xử lý sau khi đăng nhập thành công
+                        .failureUrl("/login?error=true") // Nếu login thất bại, chuyển hướng về `/login?error=true`
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout") // 🔹 Định nghĩa đường dẫn để logout
+                        .logoutSuccessUrl("/") // Sau khi logout thì quay về trang chủ
+                        .permitAll());
 
         return http.build();
     }
@@ -74,14 +62,8 @@ public class SecurityConfig {
     @Bean
     public AuthenticationSuccessHandler customSuccessHandler() {
         return (request, response, authentication) -> {
-            String redirectUrl = "/dashboard/system/"; // 🔹 Mặc định là chuyển vào dashboard system
-
-            // 🔄 Nếu user có role ADMIN thì chuyển vào dashboard admin
-            if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
-                redirectUrl = "/dashboard/admin/";
-            }
-
-            response.sendRedirect(redirectUrl); // 🔄 Điều hướng sau khi login thành công
+            String redirectUrl = "/dashboard/admin/"; // Mặc định là chuyển vào dashboard admin
+            response.sendRedirect(redirectUrl); // Điều hướng sau khi login thành công
         };
     }
 }
