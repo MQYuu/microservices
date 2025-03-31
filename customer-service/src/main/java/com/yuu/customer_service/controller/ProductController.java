@@ -3,13 +3,12 @@ package com.yuu.customer_service.controller;
 import com.yuu.customer_service.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
-
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -23,11 +22,19 @@ public class ProductController {
         String apiUrl = "http://localhost:8080/api/products";
 
         try {
-            // Sử dụng exchange để gửi request và nhận response
+            // Tạo Header chứa Basic Auth
+            HttpHeaders headers = new HttpHeaders();
+            String auth = "admin:123"; // Tài khoản và mật khẩu
+            String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes()); // Mã hóa Base64
+            headers.set("Authorization", "Basic " + encodedAuth);
+
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
+            // Gửi request với header chứa Basic Auth
             ResponseEntity<List<Product>> response = restTemplate.exchange(
                     apiUrl, 
                     HttpMethod.GET, 
-                    null, 
+                    entity, 
                     new ParameterizedTypeReference<List<Product>>() {}
             );
 
@@ -36,16 +43,13 @@ public class ProductController {
             // In ra console để kiểm tra
             System.out.println("Danh sách sản phẩm:");
             for (Product product : products) {
-                System.out.println(product);  // Hoặc dùng product.toString() nếu cần format riêng
+                System.out.println(product);
             }
 
             model.addAttribute("products", products);
         } catch (Exception e) {
-            // In chi tiết lỗi ra console
             System.err.println("Error occurred while fetching products: ");
-            e.printStackTrace();  // In chi tiết lỗi lên console
-
-            // Gửi thông báo lỗi vào model
+            e.printStackTrace();
             model.addAttribute("error", "Không thể tải danh sách sản phẩm.");
         }
 
