@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // 🔹 Tắt CSRF để có thể gọi API từ bên ngoài mà không bị lỗi
                 .authorizeHttpRequests(auth -> auth
                         // Các trang công khai không yêu cầu đăng nhập
-                        .requestMatchers("/", "/home", "/products/**", "/login", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/", "/home", "/products/**", "/products/{id}/**", "/login", "/css/**", "/js/**").permitAll()
 
                         // Cho phép truy cập API products mà không cần đăng nhập
                         .requestMatchers("/api/products/**").permitAll()
