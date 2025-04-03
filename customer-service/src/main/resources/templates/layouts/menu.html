@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Menu - Healthy Food Restaurant</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="@{/layout}"
+>
+  <head>
+    <title layout:fragment="title">Our Menu - Healthy Food Restaurant</title>
+  </head>
 
-<body>
-
-    <!-- Nội dung menu sẽ được chèn vào layout từ trang sử dụng -->
-    <section class="menu" th:fragment="content">
+  <body>
+    <div layout:fragment="content">
+      <section class="menu">
         <h2>POPULAR MENU</h2>
         <div class="menu-items">
-            <div class="menu-item">
-                <img src="./images/Noodles1.png" alt="Noodles">
-                <div class="menu-content">
-                    <h3>Noodles</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
-                    <span>$13</span>
-                </div>
+          <div class="menu-item">
+            <img th:src="@{/images/Noodles1.png}" alt="Noodles" />
+            <div class="menu-content">
+              <h3>Noodles</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+              <span>$13</span>
             </div>
-            <div class="menu-item">
-                <img src="./images/Noodles2.jpg" alt="Noodles">
-                <div class="menu-content">
-                    <h3>Noodles</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
-                    <span>$13</span>
-                </div>
+          </div>
+          <div class="menu-item">
+            <img th:src="@{/images/Noodles2.jpg}" alt="Noodles" />
+            <div class="menu-content">
+              <h3>Noodles</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+              <span>$13</span>
             </div>
-            <div class="menu-item">
-                <img src="./images/Noodles3.jpg" alt="Noodles">
-                <div class="menu-content">
-                    <h3>Noodles</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
-                    <span>$13</span>
-                </div>
+          </div>
+          <div class="menu-item">
+            <img th:src="@{/images/Noodles3.jpg}" alt="Noodles" />
+            <div class="menu-content">
+              <h3>Noodles</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+              <span>$13</span>
             </div>
+          </div>
         </div>
         <button class="show-more">SHOW MORE</button>
-    </section>
-
-</body>
+      </section>
+    </div>
+  </body>
 </html>

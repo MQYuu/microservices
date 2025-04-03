@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthy Food Restaurant</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title layout:fragment="title">Healthy Food Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
 
-<body>
-
+  <body>
     <!-- Header -->
     <header th:replace="fragments/header :: header"></header>
 
     <div id="content">
-        <!-- Đây là nơi nội dung sẽ được chèn vào từ các trang con -->
-        <div th:replace="${body}"></div>
+      <div layout:fragment="content">
+        <!-- Nội dung trang con sẽ được chèn vào đây -->
+      </div>
     </div>
 
     <!-- Footer -->
     <footer th:replace="fragments/footer :: footer"></footer>
-
-</body>
+  </body>
 </html>

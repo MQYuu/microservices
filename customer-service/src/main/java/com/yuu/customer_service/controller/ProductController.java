@@ -35,10 +35,8 @@ public class ProductController {
             model.addAttribute("error", "Không thể tải danh sách sản phẩm.");
         }
 
-        model.addAttribute("body", "layouts/product");
 
-
-        return "layout"; // Trả về trang hiển thị sản phẩm
+        return "layouts/product"; // Trả về trang hiển thị sản phẩm
     }
 
     @GetMapping("/product/{id}")
@@ -63,10 +61,8 @@ public class ProductController {
             model.addAttribute("error", "Không thể tải thông tin sản phẩm.");
         }
 
-        model.addAttribute("body", "layouts/product-detail");
 
-
-        return "layout"; 
+        return "layouts/product-detail"; 
     }
 
 }

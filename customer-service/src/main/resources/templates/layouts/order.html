@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order - Healthy Food Restaurant</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-<body>
-
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="@{/layout}"
+>
+  <head>
+    <title layout:fragment="title">Order - Healthy Food Restaurant</title>
+  </head>
+  <body>
     <!-- Định nghĩa content riêng cho trang order -->
-    <section class="order" th:fragment="content">
-        <section class="order-steps">
-            <h2>HOW TO ORDER</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="circle">01</div>
-                    <h3>Order</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation omne ullamco laboris nisi ut aliqulore.</p>
-                </div>
-                <div class="step">
-                    <div class="circle">02</div>
-                    <h3>Choose Menu</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation omne ullamco laboris nisi ut aliqulore.</p>
-                </div>
-                <div class="step">
-                    <div class="circle">03</div>
-                    <h3>Delivery</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation omne ullamco laboris nisi ut aliqulore.</p>
-                </div>
-            </div>
-        </section>
+    <div layout:fragment="content">
+      <section class="order-steps">
+        <h2>HOW TO ORDER</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="circle">01</div>
+            <h3>Order</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation
+              omne ullamco laboris nisi ut aliqulore.
+            </p>
+          </div>
+          <div class="step">
+            <div class="circle">02</div>
+            <h3>Choose Menu</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation
+              omne ullamco laboris nisi ut aliqulore.
+            </p>
+          </div>
+          <div class="step">
+            <div class="circle">03</div>
+            <h3>Delivery</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, tation
+              omne ullamco laboris nisi ut aliqulore.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
-
-</body>
+  </body>
 </html>
