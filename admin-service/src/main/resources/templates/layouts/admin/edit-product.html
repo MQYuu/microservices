@@ -9,26 +9,38 @@
         <h2 class="text-xl font-bold mb-4">Edit Product</h2>
 
         <!-- Form chỉnh sửa sản phẩm -->
-        <form th:action="@{/dashboard/admin/products/update/{id}(id=${product.id})}" method="post" th:object="${product}">
+        <form th:action="@{/dashboard/admin/products/update/{id}(id=${product.id})}" method="post" th:object="${product}" enctype="multipart/form-data">
             <input type="hidden" name="id" th:value="${product.id}">
 
             <!-- Tên sản phẩm -->
             <label class="block mb-2">Name:</label>
-            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4" >
+            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4">
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('name')}" class="text-red-500 text-sm mt-1" th:errors="*{name}"></div>
 
             <!-- Giá sản phẩm -->
             <label class="block mb-2">Price:</label>
-            <input type="number" name="price" step="0.01" th:field="*{price}" class="w-full border p-2 rounded mb-4" >
+            <input type="text" name="price" step="0.01" th:field="*{price}" class="w-full border p-2 rounded mb-4">
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('price')}" class="text-red-500 text-sm mt-1" th:errors="*{price}"></div>
 
             <!-- Số lượng sản phẩm -->
             <label class="block mb-2">Quantity:</label>
-            <input type="number" name="quantity" th:field="*{quantity}" class="w-full border p-2 rounded mb-4" >
+            <input type="text" name="quantity" th:field="*{quantity}" class="w-full border p-2 rounded mb-4">
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('quantity')}" class="text-red-500 text-sm mt-1" th:errors="*{quantity}"></div>
+
+            <!-- Hình ảnh sản phẩm -->
+            <label class="block mb-2">Image:</label>
+            <input type="file" name="imageFile" class="w-full border p-2 rounded mb-4">
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('imageUrl')}" class="text-red-500 text-sm mt-1" th:errors="*{imageUrl}"></div>
+
+            <!-- Mô tả sản phẩm -->
+            <label class="block mb-2">Description:</label>
+            <input type="text" name="description" th:field="*{description}" class="w-full border p-2 rounded mb-4">
+            <!-- Hiển thị lỗi nếu có -->
+            <div th:if="${#fields.hasErrors('description')}" class="text-red-500 text-sm mt-1" th:errors="*{description}"></div>
 
             <!-- Nút cập nhật -->
             <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Update</button>

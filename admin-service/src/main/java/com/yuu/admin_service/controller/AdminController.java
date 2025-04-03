@@ -215,14 +215,58 @@ public class AdminController {
 
     @PostMapping("/products/update/{id}")
     public String updateProduct(@PathVariable Integer id, @Valid @ModelAttribute Product product,
-            BindingResult result) {
+            BindingResult result, @RequestParam("imageFile") MultipartFile file) {
+        // Kiểm tra lỗi trong BindingResult
         if (result.hasErrors()) {
-            return "layouts/admin/edit-product"; // Nếu có lỗi validation, trả lại form với thông báo lỗi
+            System.out.println("Có lỗi trong BindingResult. Trả lại form.");
+            result.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage())); // In chi tiết lỗi
+            return "layouts/admin/edit-product"; // Trả lại form nếu có lỗi
         }
 
-        product.setId(id);
+        // Kiểm tra nếu file không rỗng (có hình ảnh mới)
+        if (!file.isEmpty()) {
+            try {
+                System.out.println("Bắt đầu xử lý hình ảnh...");
+
+                // Tạo tên tệp mới để tránh xung đột (sử dụng timestamp và tên gốc)
+                String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+                System.out.println("Tên tệp sau khi xử lý: " + fileName);
+
+                // Đường dẫn thư mục lưu hình ảnh
+                Path path = Paths.get("src/main/resources/static/uploads", fileName);
+                System.out.println("Lưu hình ảnh tại: " + path.toString());
+
+                // Kiểm tra xem thư mục uploads đã tồn tại chưa, nếu chưa thì tạo mới
+                File directory = new File("uploads");
+                if (!directory.exists()) {
+                    directory.mkdir();
+                    System.out.println("Thư mục 'uploads' đã được tạo.");
+                }
+
+                // Lưu tệp vào hệ thống (ở thư mục uploads)
+                Files.write(path, file.getBytes());
+                System.out.println("Hình ảnh đã được lưu thành công.");
+
+                // Lưu tên tệp vào thuộc tính imageUrl của sản phẩm (chỉ lưu tên tệp hoặc đường
+                // dẫn)
+                product.setImageUrl(fileName);
+                System.out.println("Lưu đường dẫn hình ảnh vào sản phẩm: " + fileName);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                result.rejectValue("imageUrl", "error.product", "Có lỗi khi tải lên hình ảnh.");
+                System.out.println("Lỗi khi tải lên hình ảnh: " + e.getMessage());
+                return "layouts/admin/edit-product"; // Trả lại form nếu có lỗi
+            }
+        }
+
+        // Cập nhật thông tin sản phẩm vào cơ sở dữ liệu
+        System.out.println("Cập nhật sản phẩm vào cơ sở dữ liệu...");
+        product.setId(id); // Đảm bảo ID sản phẩm được duy trì
         productService.updateProduct(product);
-        return "redirect:/dashboard/admin/all-products";
+        System.out.println("Sản phẩm đã được cập nhật thành công.");
+
+        return "redirect:/dashboard/admin/all-products"; // Sau khi cập nhật, chuyển hướng đến danh sách sản phẩm
     }
 
     // Xóa sản phẩm
