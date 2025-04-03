@@ -3,7 +3,7 @@ package com.yuu.admin_service.validation;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class GeneralValidator implements ConstraintValidator<ValidField, String> {
+public class GeneralValidator implements ConstraintValidator<ValidField, Object> {
 
     private int minLength;
     private int maxLength;
@@ -21,8 +21,22 @@ public class GeneralValidator implements ConstraintValidator<ValidField, String>
     }
 
     @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null || value.trim().isEmpty()) {
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
+        if (value == null) {
+            return buildViolation(context, "Vui lòng nhập dữ liệu");
+        }
+
+        if (value instanceof String) {
+            return validateString((String) value, context);
+        } else if (value instanceof Integer) {
+            return validateInteger((Integer) value, context);
+        }
+
+        return true; // valid for other types
+    }
+
+    private boolean validateString(String value, ConstraintValidatorContext context) {
+        if (value.trim().isEmpty()) {
             return buildViolation(context, "Vui lòng nhập dữ liệu");
         }
 
@@ -45,10 +59,16 @@ public class GeneralValidator implements ConstraintValidator<ValidField, String>
         return true;
     }
 
+    private boolean validateInteger(Integer value, ConstraintValidatorContext context) {
+        if (value < minLength || value > maxLength) {
+            return buildViolation(context, "Số phải trong khoảng từ " + minLength + " đến " + maxLength);
+        }
+        return true;
+    }
+
     private boolean buildViolation(ConstraintValidatorContext context, String message) {
         context.disableDefaultConstraintViolation();
         context.buildConstraintViolationWithTemplate(message).addConstraintViolation();
         return false;
     }
 }
-

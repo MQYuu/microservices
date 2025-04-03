@@ -18,15 +18,16 @@ public class Product {
     private String name;
 
     // Kiểm tra giá trị giá sản phẩm, phải là số dương
+    @ValidField(minLength = 10000, maxLength = 10000000, requireLetters = false, requireNumbers = true, allowNumbers = true)
     @Column(nullable = false)
     private Double price;
 
     // Kiểm tra số lượng, phải là số nguyên dương
+    @ValidField(minLength = 1, maxLength = 100, requireLetters = false, requireNumbers = true, allowNumbers = true)
     @Column(nullable = false)
     private Integer quantity;
 
     // Kiểm tra đường dẫn hình ảnh, yêu cầu URL hợp lệ (tối thiểu 10 ký tự)
-    @ValidField(minLength = 10, maxLength = 255, requireLetters = false, requireNumbers = false, allowNumbers = false)
     private String imageUrl;
 
     // Kiểm tra mô tả sản phẩm, phải có ít nhất 10 ký tự và chứa chữ cái
