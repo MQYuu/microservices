@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +8,12 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">YOUR LOGO</div>
-            <nav>
-                <ul>
-                    <li><a th:href="@{/}">Home</a></li>
-                    <li><a th:href="@{/menu}">Our Menu</a></li>
-                    <li><a th:href="@{/listProduct}">Our Product</a></li>
-                    <li><a th:href="@{/promo}">Promo</a></li>
-                    <li><a th:href="@{/order}">Order</a></li>
-                </ul>                
-            </nav>
-        </div>
-        <div class="header-content">
-            <h1>Healthy Food Restaurant</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </header>
 
-    <section class="menu">
+    <!-- Header -->
+    <header th:replace="fragments/header :: header"></header>
+
+    <!-- Nội dung menu sẽ được chèn vào layout từ trang sử dụng -->
+    <section class="menu" th:fragment="content">
         <h2>POPULAR MENU</h2>
         <div class="menu-items">
             <div class="menu-item">
@@ -59,45 +44,8 @@
         <button class="show-more">SHOW MORE</button>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <h4>ABOUT</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
-            </div>
+    <!-- Footer -->
+    <footer th:replace="fragments/footer :: footer"></footer>
 
-            <div class="footer-right">
-                <div>
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Join us</a></li>
-                        <li><a href="#">Ethic</a></li>
-                        <li><a href="#">Goals</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Join us</a></li>
-                        <li><a href="#">Ethic</a></li>
-                        <li><a href="#">Goals</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Join us</a></li>
-                        <li><a href="#">Ethic</a></li>
-                        <li><a href="#">Goals</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
-
 </html>

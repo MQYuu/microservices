@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Nội dung đầu trang có thể để trống -->
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">YOUR LOGO</div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/menu}">Our Menu</a></li>
+                    <li><a th:href="@{/listProduct}">Our Product</a></li>
+                    <li><a th:href="@{/promo}">Promo</a></li>
+                    <li><a th:href="@{/order}">Order</a></li>
+                </ul>                
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Healthy Food Restaurant</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </header>
+</body>
+</html>

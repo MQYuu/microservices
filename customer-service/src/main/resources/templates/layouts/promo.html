@@ -1,81 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promo - Healthy Food Restaurant</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">YOUR LOGO</div>
-            <nav>
-                <ul>
-                    <li><a th:href="@{/}">Home</a></li>
-                    <li><a th:href="@{/menu}">Our Menu</a></li>
-                    <li><a th:href="@{/listProduct}">Our Product</a></li>
-                    <li><a th:href="@{/promo}">Promo</a></li>
-                    <li><a th:href="@{/order}">Order</a></li>
-                </ul>                
-            </nav>
-        </div>
-        <div class="header-content">
-            <h1>Healthy Food Restaurant</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </header>
 
-    <section class="promo">
-        <div class="promo-content">
-            <h2>January’s Promo: Buy 1 Get 1 Free!</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
-            <button>Read More</button>
-        </div>
-    </section>
+    <header th:replace="fragments/header :: header"></header>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <h4>ABOUT</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
+    <!-- Định nghĩa fragment cho content -->
+    <div th:fragment="content">
+        <section class="promo bg-yellow-100 text-center py-16 px-6">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">January’s Promo: Buy 1 Get 1 Free!</h2>
+                <p class="text-gray-600 text-lg mb-6">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua.
+                </p>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg">
+                    Read More
+                </button>
             </div>
+        </section>
+    </div>
 
-            <div class="footer-right">
-                <div>
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Join us</a></li>
-                        <li><a href="#">Ethic</a></li>
-                        <li><a href="#">Goals</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Join us</a></li>
-                        <li><a href="#">Ethic</a></li>
-                        <li><a href="#">Goals</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Join us</a></li>
-                        <li><a href="#">Ethic</a></li>
-                        <li><a href="#">Goals</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <footer th:replace="fragments/footer :: footer"></footer>
+
 </body>
-
 </html>

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
     @GetMapping("/")
     public String home() {
-        return "index"; // Trang chủ
+        return "layout"; // Trang chủ
     }
 
     @GetMapping("/menu")
