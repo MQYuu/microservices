@@ -30,8 +30,10 @@
                     <td class="border p-2" th:text="${product.quantity}"></td>
                     <!-- Hiển thị ảnh -->
                     <td class="border p-2">
-                        <img th:src="${#strings.startsWith(product.imageUrl, 'http') ? product.imageUrl : '/images/' + product.imageUrl}" alt="Product Image" class="w-24 h-24 object-cover">
+                        <img th:src="${#strings.startsWith(product.imageUrl, 'http') ? product.imageUrl : '/uploads/' + product.imageUrl}" 
+                             alt="Product Image" class="w-24 h-24 object-cover">
                     </td>
+                    
                     <td class="border p-2">
                         <!-- Nút sửa -->
                         <a th:href="@{/dashboard/admin/products/edit/{id}(id=${product.id})}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Edit</a>
