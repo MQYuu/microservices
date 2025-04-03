@@ -14,19 +14,19 @@
 
             <!-- Tên khách hàng -->
             <label class="block mb-2">Name:</label>
-            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4" required>
+            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4" >
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('name')}" class="text-red-500 text-sm mt-1" th:errors="*{name}"></div>
 
             <!-- Email -->
             <label class="block mb-2">Email:</label>
-            <input type="email" name="email" th:field="*{email}" class="w-full border p-2 rounded mb-4" required>
+            <input type="email" name="email" th:field="*{email}" class="w-full border p-2 rounded mb-4" >
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('email')}" class="text-red-500 text-sm mt-1" th:errors="*{email}"></div>
 
             <!-- Số điện thoại -->
             <label class="block mb-2">Phone:</label>
-            <input type="text" name="phone" th:field="*{phone}" class="w-full border p-2 rounded mb-4" required>
+            <input type="text" name="phone" th:field="*{phone}" class="w-full border p-2 rounded mb-4" >
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('phone')}" class="text-red-500 text-sm mt-1" th:errors="*{phone}"></div>
 

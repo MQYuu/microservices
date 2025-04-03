@@ -14,10 +14,8 @@
     <header th:replace="fragments/header :: header"></header>
 
     <div id="content">
-        <!-- Chèn phần menu vào đây từ trang con -->
-        <div th:replace="~{layouts/menu :: content}"></div>
-        <div th:replace="~{layouts/promo :: content}"></div>
-        <div th:replace="~{layouts/order :: content}"></div>
+        <!-- Đây là nơi nội dung sẽ được chèn vào từ các trang con -->
+        <div th:replace="${body}"></div>
     </div>
 
     <!-- Footer -->

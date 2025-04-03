@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Healthy Food Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:fragment="content">
+        <section th:replace="layouts/menu :: content"></section>
+        <section th:replace="layouts/promo :: content"></section>
+        <section th:replace="layouts/order :: content"></section>
+    </div>
+</body>
+</html>

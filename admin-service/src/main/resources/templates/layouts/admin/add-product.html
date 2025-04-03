@@ -12,19 +12,19 @@
             
             <!-- Tên sản phẩm -->
             <label class="block mb-2">Name:</label>
-            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4" required>
+            <input type="text" name="name" th:field="*{name}" class="w-full border p-2 rounded mb-4">
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('name')}" class="text-red-500 text-sm mt-1" th:errors="*{name}"></div>
 
             <!-- Giá sản phẩm -->
             <label class="block mb-2">Price:</label>
-            <input type="number" name="price" th:field="*{price}" step="0.01" class="w-full border p-2 rounded mb-4" required>
+            <input type="number" name="price" th:field="*{price}" step="0.01" class="w-full border p-2 rounded mb-4">
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('price')}" class="text-red-500 text-sm mt-1" th:errors="*{price}"></div>
 
             <!-- Số lượng sản phẩm -->
             <label class="block mb-2">Quantity:</label>
-            <input type="number" name="quantity" th:field="*{quantity}" class="w-full border p-2 rounded mb-4" required>
+            <input type="number" name="quantity" th:field="*{quantity}" class="w-full border p-2 rounded mb-4">
             <!-- Hiển thị lỗi nếu có -->
             <div th:if="${#fields.hasErrors('quantity')}" class="text-red-500 text-sm mt-1" th:errors="*{quantity}"></div>
 

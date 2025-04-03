@@ -8,10 +8,8 @@
 </head>
 <body>
 
-    <header th:replace="fragments/header :: header"></header>
-
-    <!-- Định nghĩa fragment cho content -->
-    <div th:fragment="content">
+    <!-- Định nghĩa content riêng cho trang order -->
+    <section class="order" th:fragment="content">
         <section class="order-steps">
             <h2>HOW TO ORDER</h2>
             <div class="steps">
@@ -33,8 +31,6 @@
             </div>
         </section>
     </div>
-
-    <footer th:replace="fragments/footer :: footer"></footer>
 
 </body>
 </html>

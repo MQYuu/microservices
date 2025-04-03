@@ -9,9 +9,6 @@
 
 <body>
 
-    <!-- Header -->
-    <header th:replace="fragments/header :: header"></header>
-
     <!-- Nội dung menu sẽ được chèn vào layout từ trang sử dụng -->
     <section class="menu" th:fragment="content">
         <h2>POPULAR MENU</h2>
@@ -43,9 +40,6 @@
         </div>
         <button class="show-more">SHOW MORE</button>
     </section>
-
-    <!-- Footer -->
-    <footer th:replace="fragments/footer :: footer"></footer>
 
 </body>
 </html>

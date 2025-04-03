@@ -8,9 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
-    <header th:replace="fragments/header :: header"></header>
-
     <!-- Định nghĩa fragment cho content -->
     <div th:fragment="content">
         <section class="product-list py-12 px-4 bg-gray-50">
@@ -31,8 +28,6 @@
             </div>
         </section>
     </div>
-
-    <footer th:replace="fragments/footer :: footer"></footer>
 
 </body>
 </html>

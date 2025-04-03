@@ -28,7 +28,5 @@ public class ProductController {
         } else {
             return ResponseEntity.notFound().build(); //Trả về 404 nếu không tìm thấy
         }
-    }
-
-    
+    }    
 }
